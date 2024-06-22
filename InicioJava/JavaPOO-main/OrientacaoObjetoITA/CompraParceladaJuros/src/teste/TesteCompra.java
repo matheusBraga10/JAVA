@@ -4,7 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import compra.CarrinhoDeCompras;
+import compra.CarrinhoCompras;
 import compra.Compra;
 
 public class TesteCompra {
@@ -18,7 +18,7 @@ public class TesteCompra {
 
 	@Test
 	public void testeCompraAVistaMaisDe1Item() {
-		CarrinhoDeCompras carrinhoDeCompras = new CarrinhoDeCompras();
+		CarrinhoCompras carrinhoDeCompras = new CarrinhoCompras();
 		Compra c = new Compra(500);
 		Compra c1 = new Compra(50);
 		carrinhoDeCompras.adicionaCompra(c, 1);
