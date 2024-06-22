@@ -3,7 +3,7 @@ package compra;
 import java.util.HashMap;
 import java.util.Map;
 
-public class CarrinhoDeCompras {
+public class CarrinhoCompras {
 
 	private Map<Compra, Integer> compras = new HashMap<>();
 	
