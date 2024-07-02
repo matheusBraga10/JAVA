@@ -61,7 +61,7 @@ public class Principal {
 		            
 		            System.out.println("Adivinhe a palavra: " + embaralhada);
 		            System.out.println("===> ");
-		            String resposta = scanner.nextLine().toUpperCase();
+		            String resposta = scanner.nextLine();
 		            String resultado = mecanicaDoJogo.tentativa(palavra, resposta);
 		            System.out.println("Resultado: " + resultado);
 		        }
