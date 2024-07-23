@@ -3,22 +3,23 @@ package teste;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
+import javax.security.auth.login.LoginException;
+
 import org.junit.Test;
 
 import polimorfismo.login.Autenticador;
-import polimorfismo.login.LoginException;
 import polimorfismo.login.Usuario;
 
 public class TesteAutenticador {
 
 	@Test
-	public void testeLoginComSucesso() throws LoginException {
+	public void testeLoginComSucesso() throws LoginException, polimorfismo.login.LoginException {
 		Autenticador autenticador = new Autenticador();
 		Usuario usuario = autenticador.logar("guerra", "senhaDoGuerra");
 		assertEquals("guerra", usuario.getLogin());
 	}
 	@Test(expected = LoginException.class)
-	public void testeLoginComFalha() throws LoginException {
+	public void testeLoginComFalha() throws LoginException, polimorfismo.login.LoginException {
 		Autenticador autenticador = new Autenticador();
 		Usuario usuario = autenticador.logar("guerra", "senhaErradaDoGuerra");
 		assertEquals("guerra", usuario.getLogin());
@@ -31,7 +32,7 @@ public class TesteAutenticador {
 			usuario = autenticador.logar("guerra", "senhaErradaDoGuerra");
 			fail();
 		} catch (LoginException e) {
-			assertEquals("guerra", e.getLogin());
+			assertEquals("guerra",  ((Usuario) e).getLogin());
 		}
 	}
 }
