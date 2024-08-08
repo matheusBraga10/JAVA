@@ -33,19 +33,23 @@ public class Biblioteca {
 	}
 
 	public void emprestaLivro(Livro livro, Usuario usuario) throws LivroIndisponivelParaEmprestimoException, LivroOuUsuarioNulosException {
-		if ((livro == null) && (usuario == null)) throw new LivroOuUsuarioNulosException("--->Livro e Usu�rio inexistentes!");
+		if ((livro == null) && isNotUsuario(usuario)) throw new LivroOuUsuarioNulosException("--->Livro e Usu�rio inexistentes!");
 		if (livro == null) throw new LivroOuUsuarioNulosException("--->N�o pode emprestar livro inexistente!");
-		if (usuario == null) throw new LivroOuUsuarioNulosException("--->N�o pode emprestar livro a Usu�rio inexistente!");
+		if (isNotUsuario(usuario)) throw new LivroOuUsuarioNulosException("--->N�o pode emprestar livro a Usu�rio inexistente!");
 		if (livro.getUsuario() != null) throw new LivroIndisponivelParaEmprestimoException("--->Livro " + livro + " indispon�vel para empr�stimo!");
 		usuario.anexaLivroAoUsuario(livro);
 		livro.anexaUsuarioAoLivro(usuario);
 				
 	}
 
+	private boolean isNotUsuario(Usuario usuario) {
+		return usuario == null;
+	}
+
 	public void devolveLivro(Livro livro) throws DevolveLivroDisponivelParaEmprestimoException, DevolveLivroNuloParaEmprestimoException {
 		if (livro == null) throw new DevolveLivroNuloParaEmprestimoException("--->N�o pode emprestar livro inexistente!");
 		Usuario usuario = livro.getUsuario();
-		if (usuario == null) throw new DevolveLivroDisponivelParaEmprestimoException("---> Tentou devolver livro " + livro + " que est� dispon�vel para empr�stimo!");
+		if (isNotUsuario(usuario)) throw new DevolveLivroDisponivelParaEmprestimoException("---> Tentou devolver livro " + livro + " que est� dispon�vel para empr�stimo!");
 		usuario.desanexaLivroDoUsuario(livro);
 		livro.desanexaUsuarioDoLivro();
 	}
@@ -80,7 +84,7 @@ public class Biblioteca {
 		if ((nome == null)) throw new BuscaUsuarioComNomeNuloException("--->Nome do usu�rio � nulo<<<");
 		if (nome.isEmpty()) throw new BuscaUsuarioComNomeVazioException("--->Nome do usu�rio � vazio<<<");
 		Iterator<Usuario> iter = _usuarios.iterator();
-		while ((iter.hasNext() == true) && (usuarioAchado == null)) {
+		while ((iter.hasNext() == true) && isNotUsuario(usuarioAchado)) {
 			Usuario usuario = (Usuario) iter.next();
 			String oNome = usuario.getNome();
 			if (oNome == nome) usuarioAchado = usuario;
