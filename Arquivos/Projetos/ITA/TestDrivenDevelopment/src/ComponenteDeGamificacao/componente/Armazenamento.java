@@ -1,48 +1,66 @@
 package ComponenteDeGamificacao.componente;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Armazenamento {
 
-	private String usuario;
+	private Usuario usuario;
 	private String tipoPonto;
-	private String ponto;
+	private Integer ponto;
 
-	HashMap<String,Object> dados = new HashMap<>();
+	HashMap<String,Integer> dados = new HashMap<>();
+	HashMap<Object,Object> armazenaDados = new HashMap<>();
 	
-	public HashMap<String,Object> armazenaDados(String usuario){
+	
+	
+	public HashMap<Object, Object> armazenaDado(Usuario usuario, String tipoPonto, Integer ponto){
+		this.usuario = usuario;
+		this.tipoPonto = tipoPonto;
+		this.ponto = ponto;
 		dados.put(getTipoPonto(), getPonto());
-		HashMap<String,Object> armazenaDados = new HashMap<>();
-		armazenaDados.put(usuario, dados);
+		armazenaDados.put(getUsuario(), getDados());
 		return armazenaDados;
+	} 
+
+	public HashMap<Object, Object> recuperaPontoPorTipo() {
+		if(((HashMap<String, Integer>) armazenaDados.get(getUsuario())).get(getTipoPonto()) <= 0) return null;
+		return getArmazenaDados();
 	}
 	
+	public HashMap<Object, Object> retornaTodosComPonto(){
+		HashMap<Object, Object> saida = new HashMap<>();
+		for(Entry<Object, Object> entrada : armazenaDados.entrySet()) {
+			if(((HashMap<String, Integer>) armazenaDados.get(getUsuario())).get(getTipoPonto()) <= 0) return null;
+			saida.put(entrada.getKey(), entrada.getValue());
+		}
+		return saida;
+	}
 	
-	
-	
-	
-	
-	
-	
-	private String getUsuario() {
+	private Usuario getUsuario() {
 		return usuario;
 	}
-	protected void setUsuario(String usuario) {
-		getUsuario();
-	}
+
 	private String getTipoPonto() {
 		return tipoPonto;
 	}
-	protected void setTipoPonto(String tipoPonto) {
-		getTipoPonto();
-	}
-	private String getPonto() {
+
+	private Integer getPonto() {
 		return ponto;
 	}
-	protected void setPonto(Integer ponto) {
-		getPonto();
-	}	
-	
+
+	private HashMap<String, Integer> getDados() {
+		return dados;
+	}
+
+	private HashMap<Object, Object> getArmazenaDados() {
+		return armazenaDados;
+	}
+
 
 	
+
+
+
 }
