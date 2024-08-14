@@ -1,7 +1,5 @@
 package ComponenteDeGamificacao.componente;
 
-import java.util.HashMap;
-
 public class Placar {
 
 	Armazenamento armazenamento;
@@ -11,17 +9,15 @@ public class Placar {
 	private Integer ponto;
 	
 	Usuario nomeArmazenado = ((Placar) armazenamento.armazenaDados.keySet()).getUsuario();
-	String pontoArmazenado = (String) ((HashMap<Object, Object>) armazenamento.armazenaDados.get(getUsuario())).get(getTipoPonto());
-	String tipoPontoArmazenado = (String) (armazenamento.armazenaDados.get(getTipoPonto()));
 	
-	public Object registraPontosUsuario() {
-		armazenamento = new Armazenamento();
+	public String registraPontosUsuario(Armazenamento armazenamento) {
+		this.armazenamento = armazenamento;
 		armazenamento.armazenaDado(usuario, tipoPonto, ponto);
-		return "O usuário " + nomeArmazenado +  " recebeu " + pontoArmazenado + " pontos do tipo " + tipoPontoArmazenado;
+		return "O usuário " + usuario +  " recebeu " + ponto + " pontos do tipo " + tipoPonto;
 	}
 
 	public String retornaPontosUsuario() {
-		return "O usuário " + nomeArmazenado +" tem " + pontoArmazenado + " pontos do tipo " + tipoPontoArmazenado;
+		return "O usuário " + usuario + " tem " + ponto + " pontos do tipo " + tipoPonto;
 	}
 	
 

@@ -1,6 +1,7 @@
 package ComponenteDeGamificacao.teste;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNull;
 
 import java.util.HashMap;
 
@@ -29,7 +30,7 @@ public class TesteArmazenamento {
 	@Test
 	public void testArmazenaDados() {
 		interExpected.put("estrela", 10);
-		expected.put(usuario, interExpected);
+		expected.put(usuario.getUsuario(), interExpected);
 		assertEquals(expected
 				, (armazenamento.armazenaDado(usuario, "estrela", 10)));
 	}
@@ -37,8 +38,7 @@ public class TesteArmazenamento {
 	@Test
 	public void testRecuperaDados() {
 		interExpected.put("estrela", 10);
-		expected.put(usuario, interExpected);
-		armazenamento = new Armazenamento();
+		expected.put(usuario.getUsuario(), interExpected);
 		armazenamento.armazenaDado(usuario, "estrela", 10);
 		assertEquals(expected
 				, (armazenamento.recuperaPontoPorTipo()));
@@ -46,20 +46,17 @@ public class TesteArmazenamento {
 
 	@Test
 	public void testNaoRetornaQuandoNaoTemPonto() {
-		armazenamento = new Armazenamento();
 		armazenamento.armazenaDado(usuario, "estrela", 0);
-		assertEquals(null
-				, (armazenamento.recuperaPontoPorTipo()));
+		assertEquals("{}", armazenamento.retornaTodosComPonto().toString());
 	}
 	
 	@Test
 	public void testRetornaQuandoTemPonto() {
 		interExpected.put("estrela", 10);
-		expected.put(usuario, interExpected);
-		armazenamento = new Armazenamento();
+		expected.put(usuario.getUsuario(), interExpected);
 		armazenamento.armazenaDado(usuario, "estrela", 10);
 		assertEquals(expected
-				, (armazenamento.recuperaPontoPorTipo()));
+				, (armazenamento.retornaTodosComPonto()));
 	}
 
 	@Test
@@ -70,20 +67,15 @@ public class TesteArmazenamento {
 		usuario1 = new Usuario("Matheus");
 		usuario2 = new Usuario("Lucas");
 		usuario3 = new Usuario("Max");
-		interExpected.put("estrela", 10);
-		interExpected.put("estrela", 0);
-		interExpected.put("moeda", 50);
-		expected.put(usuario1, interExpected);
-		expected.put(usuario2, interExpected);
-		expected.put(usuario3, interExpected);
 		
 		armazenamento = new Armazenamento();
 		armazenamento.armazenaDado(usuario1, "estrela", 10);
 		armazenamento.armazenaDado(usuario2, "estrela", 0);
 		armazenamento.armazenaDado(usuario3, "moeda", 50);
 		
+		String expected = "{Matheus={estrela=10}, Max={moeda=50}}";
 		assertEquals(expected
-				, (armazenamento.retornaTodosComPonto()));
+				, (armazenamento.retornaTodosComPonto().toString()));
 	}
 	
 

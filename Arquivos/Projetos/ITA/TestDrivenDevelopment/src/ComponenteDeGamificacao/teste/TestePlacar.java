@@ -25,12 +25,11 @@ public class TestePlacar {
 	@Test
 	public void testRegistroPlacar() {
 		armazenamento.armazenaDado(usuario, "estrela", 10);
-		assertEquals("O usuário [Matheus] recebeu 10 pontos do tipo [estrela]", placar.registraPontosUsuario());
+		assertEquals("O usuário [Matheus] recebeu 10 pontos do tipo [estrela]", placar.registraPontosUsuario(armazenamento));
 	}
 
 	@Test
 	public void testRecuperarPlacar() {
-		placar = new Placar();
 		armazenamento.armazenaDado(usuario, "estrela", 10);
 		assertEquals("O usuário Matheus tem 10 pontos do tipo estrela", placar.retornaPontosUsuario());
 	}

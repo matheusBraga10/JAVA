@@ -10,32 +10,35 @@ public class Armazenamento {
 	private String tipoPonto;
 	private Integer ponto;
 
-	HashMap<String,Integer> dados = new HashMap<>();
-	HashMap<Object,Object> armazenaDados = new HashMap<>();
+	HashMap<String, Map<String, Integer>> armazenaDados = new HashMap<>();
 	
 	
 	
-	public HashMap<Object, Object> armazenaDado(Usuario usuario, String tipoPonto, Integer ponto){
+	public HashMap<String, Map<String, Integer>> armazenaDado(Usuario usuario, String tipoPonto, Integer ponto){
 		this.usuario = usuario;
 		this.tipoPonto = tipoPonto;
 		this.ponto = ponto;
-		dados.put(getTipoPonto(), getPonto());
-		armazenaDados.put(getUsuario(), getDados());
+		armazenaDados.put(usuario.getUsuario(), Map.of(getTipoPonto(), getPonto()));
 		return armazenaDados;
 	} 
 
-	public HashMap<Object, Object> recuperaPontoPorTipo() {
-		if(((HashMap<String, Integer>) armazenaDados.get(getUsuario())).get(getTipoPonto()) <= 0) return null;
+	public HashMap<String, Map<String, Integer>> recuperaPontoPorTipo() {
 		return getArmazenaDados();
 	}
 	
 	public HashMap<Object, Object> retornaTodosComPonto(){
 		HashMap<Object, Object> saida = new HashMap<>();
-		for(Entry<Object, Object> entrada : armazenaDados.entrySet()) {
-			if(((HashMap<String, Integer>) armazenaDados.get(getUsuario())).get(getTipoPonto()) <= 0) return null;
-			saida.put(entrada.getKey(), entrada.getValue());
-		}
+		retornaValores(saida);
 		return saida;
+	}
+
+	private void retornaValores(HashMap<Object, Object> saida) {
+		for(Entry<String, Map<String, Integer>> entrada : armazenaDados.entrySet()) {
+			String key = entrada.getKey();
+			Map<String, Integer> value = entrada.getValue();
+			if(value.containsValue(0)) return;
+			saida.put(key, value);
+		}
 	}
 	
 	private Usuario getUsuario() {
@@ -50,11 +53,7 @@ public class Armazenamento {
 		return ponto;
 	}
 
-	private HashMap<String, Integer> getDados() {
-		return dados;
-	}
-
-	private HashMap<Object, Object> getArmazenaDados() {
+	private HashMap<String, Map<String, Integer>> getArmazenaDados() {
 		return armazenaDados;
 	}
 
