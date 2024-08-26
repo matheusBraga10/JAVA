@@ -1,48 +1,65 @@
 package ComponenteDeGamificacao.componente;
 
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Armazenamento {
 
-	private String usuario;
+	private Usuario usuario;
 	private String tipoPonto;
-	private String ponto;
+	private Integer ponto;
 
-	HashMap<String,Object> dados = new HashMap<>();
+	HashMap<String, Map<String, Integer>> armazenaDados = new HashMap<>();
 	
-	public HashMap<String,Object> armazenaDados(String usuario){
-		dados.put(getTipoPonto(), getPonto());
-		HashMap<String,Object> armazenaDados = new HashMap<>();
-		armazenaDados.put(usuario, dados);
+	
+	
+	public HashMap<String, Map<String, Integer>> armazenaDado(Usuario usuario, String tipoPonto, Integer ponto){
+		this.usuario = usuario;
+		this.tipoPonto = tipoPonto;
+		this.ponto = ponto;
+		armazenaDados.put(usuario.getUsuario(), Map.of(getTipoPonto(), getPonto()));
 		return armazenaDados;
+	} 
+
+	public HashMap<String, Map<String, Integer>> recuperaPontoPorTipo() {
+		return getArmazenaDados();
 	}
 	
+	public HashMap<Object, Object> retornaTodosComPonto(){
+		HashMap<Object, Object> saida = new HashMap<>();
+		retornaValores(saida);
+		return saida;
+	}
+
+	private void retornaValores(HashMap<Object, Object> saida) {
+		for(Entry<String, Map<String, Integer>> entrada : armazenaDados.entrySet()) {
+			String key = entrada.getKey();
+			Map<String, Integer> value = entrada.getValue();
+			if(value.containsValue(0)) return;
+			saida.put(key, value);
+		}
+	}
 	
-	
-	
-	
-	
-	
-	
-	private String getUsuario() {
+	private Usuario getUsuario() {
 		return usuario;
 	}
-	protected void setUsuario(String usuario) {
-		getUsuario();
-	}
+
 	private String getTipoPonto() {
 		return tipoPonto;
 	}
-	protected void setTipoPonto(String tipoPonto) {
-		getTipoPonto();
-	}
-	private String getPonto() {
+
+	private Integer getPonto() {
 		return ponto;
 	}
-	protected void setPonto(Integer ponto) {
-		getPonto();
-	}	
-	
+
+	private HashMap<String, Map<String, Integer>> getArmazenaDados() {
+		return armazenaDados;
+	}
+
 
 	
+
+
+
 }
