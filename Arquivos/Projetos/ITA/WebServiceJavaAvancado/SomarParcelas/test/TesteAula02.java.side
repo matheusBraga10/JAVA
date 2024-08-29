@@ -1,0 +1,83 @@
+{
+  "id": "dc47bd41-e7e3-4746-a0fb-dde71e98c0c2",
+  "version": "2.0",
+  "name": "TesteAula02.java",
+  "url": "http://localhost:8080",
+  "tests": [{
+    "id": "cbb74df6-e435-49cf-b699-1341c975c067",
+    "name": "TesteAula02.java",
+    "commands": [{
+      "id": "626ad574-3851-44de-9e7a-17d024de8a9b",
+      "comment": "",
+      "command": "open",
+      "target": "/SomarParcelas/",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "350f571e-3c85-48eb-a90d-cfc96d806e25",
+      "comment": "",
+      "command": "setWindowSize",
+      "target": "1399x754",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "41b0db2c-7df5-4733-bb6d-0b940ea7d7a4",
+      "comment": "",
+      "command": "click",
+      "target": "name=p1",
+      "targets": [
+        ["name=p1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='p1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "adc9ae20-2af3-49a2-bc70-6461b293a494",
+      "comment": "",
+      "command": "type",
+      "target": "name=p1",
+      "targets": [
+        ["name=p1", "name"],
+        ["css=input:nth-child(1)", "css:finder"],
+        ["xpath=//input[@name='p1']", "xpath:attributes"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "12"
+    }, {
+      "id": "bc0ce7d5-de19-4966-b06b-678288199b71",
+      "comment": "",
+      "command": "type",
+      "target": "name=p2",
+      "targets": [
+        ["name=p2", "name"],
+        ["css=input:nth-child(2)", "css:finder"],
+        ["xpath=//input[@name='p2']", "xpath:attributes"],
+        ["xpath=//input[2]", "xpath:position"]
+      ],
+      "value": "32"
+    }, {
+      "id": "f0214e06-a5cc-48ce-b432-fca86866d866",
+      "comment": "",
+      "command": "click",
+      "target": "name=calcular",
+      "targets": [
+        ["name=calcular", "name"],
+        ["css=input:nth-child(3)", "css:finder"],
+        ["xpath=//input[@name='calcular']", "xpath:attributes"],
+        ["xpath=//input[3]", "xpath:position"]
+      ],
+      "value": ""
+    }]
+  }],
+  "suites": [{
+    "id": "a48708f9-fe53-4c63-8f8b-c2bde7ab6f3f",
+    "name": "Default Suite",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["cbb74df6-e435-49cf-b699-1341c975c067"]
+  }],
+  "urls": ["http://localhost:8080/"],
+  "plugins": []
+}
