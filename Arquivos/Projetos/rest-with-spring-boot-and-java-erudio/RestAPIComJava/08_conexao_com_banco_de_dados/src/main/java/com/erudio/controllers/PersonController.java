@@ -14,48 +14,43 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.erudio.model.Person;
+import com.erudio.data.vo.v1.PersonVO;
 import com.erudio.services.PersonServices;
 
-@RequestMapping("/person")
 @RestController
+@RequestMapping("/person")
 public class PersonController {
-
+	
 	@Autowired
-	private PersonServices services;
+	private PersonServices service;
 	
 	@GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Person> findAll() {
-		return services.findAll(); 
+	public List<PersonVO> findAll() {
+		return service.findAll();
 	}
 	
-	@GetMapping(value="/{id}",
+	@GetMapping(value = "/{id}",
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person findById(@PathVariable Long id) {
-		
-		return services.findById(id); 
+	public PersonVO findById(@PathVariable(value = "id") Long id) {
+		return service.findById(id);
 	}
 	
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person create(@RequestBody Person person) {
-		
-		return services.create(person); 
+	public PersonVO create(@RequestBody PersonVO person) {
+		return service.create(person);
 	}
 	
 	@PutMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
 			produces = MediaType.APPLICATION_JSON_VALUE)
-	public Person update(@RequestBody Person person) {
-		
-		return services.update(person); 
-	}
-	
-	@DeleteMapping(value= "/{id}")
-	public ResponseEntity<?> delete(@PathVariable Long id) {
-		services.delete(id);
-		return ResponseEntity.noContent().build(); 
+	public PersonVO update(@RequestBody PersonVO person) {
+		return service.update(person);
 	}
 	
 	
-	 
+	@DeleteMapping(value = "/{id}")
+	public ResponseEntity<?> delete(@PathVariable(value = "id") Long id) {
+		service.delete(id);
+		return ResponseEntity.noContent().build();
+	}
 }
