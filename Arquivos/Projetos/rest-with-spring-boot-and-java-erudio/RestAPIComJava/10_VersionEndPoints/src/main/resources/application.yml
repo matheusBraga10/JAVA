@@ -13,3 +13,6 @@ spring:
 #      hibernate:
 #        dialect: org.hibernate.dialect.Oracle11gDialect 
     show-sql: false
+  flyway:
+    baseline-on-migrate: true
+    baseline-version: '0'
