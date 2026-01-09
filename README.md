@@ -1,7 +1,7 @@
 
 ### 2. JAVA (https://github.com/matheusBraga10/JAVA)
 
-```markdown
+
 [![Java Core](https://img.shields.io/badge/Java-Core-007396?style=for-the-badge&logo=java&logoColor=white)](https://github.com/matheusbraga10)
 [![Maven](https://img.shields.io/badge/Maven-C51828?style=for-the-badge&logo=apachemaven&logoColor=white)](https://maven.apache.org/)
 
@@ -38,3 +38,5 @@ void testQuickSortPerformance() {
     assertTrue(lista.isSorted());
     System.out.println("QuickSort 1M: " + (fim - inicio) / 1_000_000 + "ms");
 }
+
+Autor: Matheus Felipe Braga | UTFPR Pós Java
