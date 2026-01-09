@@ -1,5 +1,5 @@
 
-### 2. JAVA (https://github.com/matheusBraga10/JAVA)
+### JAVA (https://github.com/matheusBraga10/JAVA)
 
 
 [![Java Core](https://img.shields.io/badge/Java-Core-007396?style=for-the-badge&logo=java&logoColor=white)](https://github.com/matheusbraga10)
