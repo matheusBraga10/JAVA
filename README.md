@@ -4,7 +4,7 @@
 
 # Minha Evolução em Java - Do Básico ao Enterprise
 
-**Jornada completa Java**: **JDK 8→21**, **Maven→Gradle**, **JDBC→Spring Boot**, **Monolito→Microservices**. **Benchmarks**, **Docker** e **deploy AWS**.[attached_file:1]
+**Jornada completa Java**: **JDK 8→21**, **Maven→Gradle**, **JDBC→Spring Boot**, **Monolito→Microservices**. **Benchmarks**, **Docker** e **deploy AWS**.
 
 ## 📈 Timeline Evolução
 
