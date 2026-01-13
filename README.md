@@ -154,17 +154,6 @@ JavaPOO
 JavaUTFPR
 
 
-## Quick Deploy
-
-1. **Copie README.md** em `JAVA/`
-2. **Estruture módulos Maven** conforme exemplo
-3. **Adicione Dockerfiles** e `docker-compose.yml`
-4. **Teste local**: `docker-compose up`
-5. **Commit**: `git commit -m "Add Java Evolution roadmap + Docker + benchmarks"`
-
-Seu repo **JAVA** transformará em **portfólio senior** com **evolução documentada**, **benchmarks reais** e **deploy production-ready**! 🎯[1]
-
-
 Autor: Matheus Felipe Braga | Backend Java Pleno @ Prodemge | UTFPR Pós Java
 
 
